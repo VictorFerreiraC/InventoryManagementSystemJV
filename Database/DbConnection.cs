@@ -41,12 +41,12 @@ namespace InventoryManagementSystemJV.Database
         #endregion
 
         #region User authentication
-        public User Authentication(User user)
+        public int Authentication(User user)
         {
-            User isUser = null;
+            int isUser = 0;
             try
             {
-                string sql = "SELECT id_user, name_user, type_user FROM TB_USER WHERE nickname_user = '" + user.Nickname + "' AND password_user = '" + user.Password + "'";
+                string sql = "SELECT id_user FROM TB_USER WHERE nickname_user = '" + user.Nickname + "' AND password_user = '" + user.Password + "'";
                 command.Connection = connection();
                 command.CommandText = sql;
                 SqlDataReader reader = command.ExecuteReader();
@@ -54,11 +54,7 @@ namespace InventoryManagementSystemJV.Database
                 {
                     while (reader.Read())
                     {
-                        int id = reader.GetInt32(0);
-                        string name = reader.GetString(1);
-                        int type = reader.GetInt32(2);
-
-                        isUser = new User(id, name, type);
+                        isUser = reader.GetInt32(0);
                     }
                 }
             }
@@ -71,6 +67,41 @@ namespace InventoryManagementSystemJV.Database
                 sqlConnection.Close();
             }
             return isUser;
+        }
+        #endregion
+
+        #region User data
+        public User UserData(int idUser)
+        {
+            int id = 0;
+            string name = null;
+            int type = 0;
+            try
+            {
+                string sql = "SELECT id_user, name_user, type_user FROM TB_USER WHERE id_user = " + idUser;
+                command.Connection = connection();
+                command.CommandText = sql;
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        id = reader.GetInt32(0);
+                        name = reader.GetString(1);
+                        type = reader.GetInt32(2);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            User user = new User(id, name, type);
+            return user;
         }
         #endregion
     }

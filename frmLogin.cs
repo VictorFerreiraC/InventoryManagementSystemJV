@@ -26,11 +26,14 @@ namespace InventoryManagementSystemJV
         {
             User user = new User(txtNickname.Text, txtPassword.Text);
             DbConnection dbConnection = new DbConnection();
-            var isUser = dbConnection.Authentication(user);
+            int idUser = dbConnection.Authentication(user);
 
-            if (isUser != null)
+            if (idUser != 0)
             {
-                MessageBox.Show("OK!");
+                this.Hide();
+                Form f = new frmMainMenu(idUser);
+                f.Closed += (s, args) => this.Close();
+                f.Show();
             }
             else
             {

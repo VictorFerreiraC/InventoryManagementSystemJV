@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InventoryManagementSystemJV.Database;
+using InventoryManagementSystemJV.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +14,25 @@ namespace InventoryManagementSystemJV
 {
     public partial class frmMainMenu : Form
     {
+        private int idUser;
+        private User user;
+
         public frmMainMenu()
         {
             InitializeComponent();
         }
 
+        public frmMainMenu(int user) : this()
+        {
+            idUser = user;
+        }
+
         private void frmMainMenu_Load(object sender, EventArgs e)
         {
-
+            DbConnection dbConnection = new DbConnection();
+            user = dbConnection.UserData(idUser);
+            lblWelcome.Text = "Welcome " + user.Name.ToString();
+            imgUser.ImageLocation = "";
         }
     }
 }

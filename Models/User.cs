@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,12 +27,12 @@ namespace InventoryManagementSystemJV.Models
             this.Password = password;
         }
 
-        //Login OK
-        public User(int id, string name, int typeUser)
+        //Current User
+        public User(int id, string name, int type)
         {
             this.Id = id;
             this.Name = name;
-            this.TypeUser = typeUser;
+            this.TypeUser = type;
         }
     }
 }
