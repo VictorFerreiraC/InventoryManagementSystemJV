@@ -13,7 +13,9 @@ namespace InventoryManagementSystemJV.Models
         public string? Name { get; set; }
         public string? Nickname { get; set; }
         public string? Password { get; set; }
-        public int TypeUser { get; set; }
+        public int UserType { get; set; }
+        public string? UserTypeName { get; set; }
+        public string? Img { get; set; }
 
         public User()
         {
@@ -28,11 +30,13 @@ namespace InventoryManagementSystemJV.Models
         }
 
         //Current User
-        public User(int id, string name, int type)
+        public User(int id, string name, int type, string typeName, string img)
         {
             this.Id = id;
             this.Name = name;
-            this.TypeUser = type;
+            this.UserType = type;
+            this.UserTypeName = typeName;
+            this.Img = img;
         }
     }
 }

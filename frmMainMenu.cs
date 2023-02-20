@@ -31,8 +31,10 @@ namespace InventoryManagementSystemJV
         {
             DbConnection dbConnection = new DbConnection();
             user = dbConnection.UserData(idUser);
-            lblWelcome.Text = "Welcome " + user.Name.ToString();
-            imgUser.ImageLocation = "";
+            imgUser.ImageLocation = user.Img;
+            lblWelcome.Text = "Welcome " + user.Name;
+            lblUserType.Text = user.UserTypeName;
+
         }
     }
 }

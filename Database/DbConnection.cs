@@ -76,9 +76,11 @@ namespace InventoryManagementSystemJV.Database
             int id = 0;
             string name = null;
             int type = 0;
+            string typeName = null;
+            string img = null;
             try
             {
-                string sql = "SELECT id_user, name_user, type_user FROM TB_USER WHERE id_user = " + idUser;
+                string sql = "SELECT TB_USER.id_user, TB_USER.name_user, TB_USER.type_user, TB_USER_TYPE.name_userType, TB_USER.img_user FROM TB_USER INNER JOIN TB_USER_TYPE ON TB_USER.type_user = TB_USER_TYPE.id_userType WHERE id_user = " + idUser;
                 command.Connection = connection();
                 command.CommandText = sql;
                 SqlDataReader reader = command.ExecuteReader();
@@ -89,6 +91,8 @@ namespace InventoryManagementSystemJV.Database
                         id = reader.GetInt32(0);
                         name = reader.GetString(1);
                         type = reader.GetInt32(2);
+                        typeName = reader.GetString(3);
+                        img = reader.GetString(4);
                     }
                 }
             }
@@ -100,7 +104,7 @@ namespace InventoryManagementSystemJV.Database
             {
                 sqlConnection.Close();
             }
-            User user = new User(id, name, type);
+            User user = new User(id, name, type, typeName, img);
             return user;
         }
         #endregion
