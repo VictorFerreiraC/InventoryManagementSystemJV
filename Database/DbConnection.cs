@@ -108,5 +108,61 @@ namespace InventoryManagementSystemJV.Database
             return user;
         }
         #endregion
+
+        #region category list
+        public DataTable CategoryList()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Id");
+            dt.Columns.Add("Name");
+
+            try
+            {
+                string sql = "SELECT * FROM TB_CATEGORY";
+                command.Connection = connection();
+                command.CommandText = sql;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    dt.Rows.Add(reader.GetInt32(0),reader.GetString(1));
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return dt;
+        }
+        #endregion
+
+        #region Category registration
+        public bool CategoryRegistration(string categoryName)
+        {
+            bool isOk = false;
+            try
+            {
+                string sql = "INSERT INTO TB_CATEGORY(name_category) VALUES ('" + categoryName + "')";
+                command.Connection = connection();
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+                isOk = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+
+            return isOk;
+        }
+        #endregion
     }
 }

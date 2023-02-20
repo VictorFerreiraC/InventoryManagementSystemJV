@@ -24,6 +24,18 @@ namespace InventoryManagementSystemJV
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
+            if (txtNickname.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Please complete all fields",
+                    this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (txtPassword.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Please complete all fields",
+                    this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             User user = new User(txtNickname.Text, txtPassword.Text);
             DbConnection dbConnection = new DbConnection();
             int idUser = dbConnection.Authentication(user);

@@ -36,5 +36,13 @@ namespace InventoryManagementSystemJV
             lblUserType.Text = user.UserTypeName;
 
         }
+
+        private void btnCategories_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f = new frmCategories();
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+        }
     }
 }

@@ -44,7 +44,7 @@
             this.lblWelcome.Location = new System.Drawing.Point(78, 28);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(70, 15);
-            this.lblWelcome.TabIndex = 0;
+            this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "lblWelcome";
             // 
             // imgUser
@@ -80,6 +80,7 @@
             // 
             // btnCategories
             // 
+            this.btnCategories.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCategories.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCategories.Image = ((System.Drawing.Image)(resources.GetObject("btnCategories.Image")));
             this.btnCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -87,13 +88,15 @@
             this.btnCategories.Name = "btnCategories";
             this.btnCategories.Padding = new System.Windows.Forms.Padding(5);
             this.btnCategories.Size = new System.Drawing.Size(138, 50);
-            this.btnCategories.TabIndex = 4;
+            this.btnCategories.TabIndex = 3;
             this.btnCategories.Text = "Categories";
             this.btnCategories.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCategories.UseVisualStyleBackColor = true;
+            this.btnCategories.Click += new System.EventHandler(this.btnCategories_Click);
             // 
             // btnProducts
             // 
+            this.btnProducts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnProducts.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnProducts.Image = ((System.Drawing.Image)(resources.GetObject("btnProducts.Image")));
             this.btnProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -101,7 +104,7 @@
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Padding = new System.Windows.Forms.Padding(5);
             this.btnProducts.Size = new System.Drawing.Size(127, 50);
-            this.btnProducts.TabIndex = 5;
+            this.btnProducts.TabIndex = 2;
             this.btnProducts.Text = "Products";
             this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnProducts.UseVisualStyleBackColor = true;

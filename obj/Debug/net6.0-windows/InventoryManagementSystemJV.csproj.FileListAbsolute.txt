@@ -24,3 +24,4 @@ C:\Portfolio\InventoryManagementSystemJV\bin\Debug\net6.0-windows\runtimes\unix\
 C:\Portfolio\InventoryManagementSystemJV\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Portfolio\InventoryManagementSystemJV\obj\Debug\net6.0-windows\InventoryManagementSystemJV.csproj.CopyComplete
 C:\Portfolio\InventoryManagementSystemJV\obj\Debug\net6.0-windows\InventoryManagementSystemJV.Properties.Resources.resources
+C:\Portfolio\InventoryManagementSystemJV\obj\Debug\net6.0-windows\InventoryManagementSystemJV.frmCategories.resources
