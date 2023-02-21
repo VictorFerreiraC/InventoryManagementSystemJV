@@ -109,7 +109,7 @@ namespace InventoryManagementSystemJV.Database
         }
         #endregion
 
-        #region category list
+        #region Category list
         public DataTable CategoryList()
         {
             DataTable dt = new DataTable();
@@ -141,12 +141,37 @@ namespace InventoryManagementSystemJV.Database
         #endregion
 
         #region Category registration
-        public bool CategoryRegistration(string categoryName)
+        public bool CategoryRegistration(Category category)
         {
             bool isOk = false;
             try
             {
-                string sql = "INSERT INTO TB_CATEGORY(name_category) VALUES ('" + categoryName + "')";
+                string sql = "INSERT INTO TB_CATEGORY(name_category) VALUES ('" + category.Name + "')";
+                command.Connection = connection();
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+                isOk = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+
+            return isOk;
+        }
+        #endregion
+
+        #region Category editing
+        public bool CategoryEdit(Category category)
+        {
+            bool isOk = false;
+            try
+            {
+                string sql = "UPDATE TB_CATEGORY SET name_category = '" + category.Name + "' WHERE id_category = " + category.Id;
                 command.Connection = connection();
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
