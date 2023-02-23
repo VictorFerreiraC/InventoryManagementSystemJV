@@ -1,0 +1,71 @@
+USE [InventoryManagementSystem]
+GO
+/****** Object:  Table [dbo].[TB_CATEGORY]    Script Date: 22/02/2023 21:37:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TB_CATEGORY](
+	[id_category] [int] IDENTITY(1,1) NOT NULL,
+	[name_category] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_category] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TB_PRODUCT]    Script Date: 22/02/2023 21:37:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TB_PRODUCT](
+	[id_product] [int] IDENTITY(1,1) NOT NULL,
+	[name_product] [varchar](50) NOT NULL,
+	[quantity_product] [int] NULL,
+	[price_product] [decimal](18, 0) NOT NULL,
+	[category_product] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_product] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TB_USER]    Script Date: 22/02/2023 21:37:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TB_USER](
+	[id_user] [int] IDENTITY(1,1) NOT NULL,
+	[name_user] [varchar](255) NOT NULL,
+	[nickname_user] [varchar](10) NOT NULL,
+	[password_user] [varchar](20) NOT NULL,
+	[type_user] [int] NULL,
+	[img_user] [varchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_user] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TB_USER_TYPE]    Script Date: 22/02/2023 21:37:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TB_USER_TYPE](
+	[id_userType] [int] IDENTITY(1,1) NOT NULL,
+	[name_userType] [varchar](10) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_userType] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[TB_PRODUCT]  WITH CHECK ADD FOREIGN KEY([category_product])
+REFERENCES [dbo].[TB_CATEGORY] ([id_category])
+GO
+ALTER TABLE [dbo].[TB_USER]  WITH CHECK ADD FOREIGN KEY([type_user])
+REFERENCES [dbo].[TB_USER_TYPE] ([id_userType])
+GO

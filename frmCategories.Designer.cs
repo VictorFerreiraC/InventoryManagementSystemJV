@@ -41,6 +41,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEditCategory = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.gpbCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).BeginInit();
             this.SuspendLayout();
@@ -70,7 +71,7 @@
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(29, 39);
+            this.lblId.Location = new System.Drawing.Point(21, 39);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(21, 15);
             this.lblId.TabIndex = 7;
@@ -80,7 +81,7 @@
             // lblCategoryId
             // 
             this.lblCategoryId.AutoSize = true;
-            this.lblCategoryId.Location = new System.Drawing.Point(56, 39);
+            this.lblCategoryId.Location = new System.Drawing.Point(48, 39);
             this.lblCategoryId.Name = "lblCategoryId";
             this.lblCategoryId.Size = new System.Drawing.Size(38, 15);
             this.lblCategoryId.TabIndex = 6;
@@ -188,11 +189,25 @@
             this.btnEditCategory.Visible = false;
             this.btnEditCategory.Click += new System.EventHandler(this.btnEditCategory_Click);
             // 
+            // btnBack
+            // 
+            this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
+            this.btnBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBack.Location = new System.Drawing.Point(12, 415);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(63, 23);
+            this.btnBack.TabIndex = 13;
+            this.btnBack.Text = "Back";
+            this.btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // frmCategories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnEditCategory);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
@@ -226,5 +241,6 @@
         private Button btnDelete;
         private Button btnEditCategory;
         private Label lblId;
+        private Button btnBack;
     }
 }

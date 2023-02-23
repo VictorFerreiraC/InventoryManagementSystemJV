@@ -40,7 +40,15 @@ namespace InventoryManagementSystemJV
         private void btnCategories_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form f = new frmCategories();
+            Form f = new frmCategories(idUser);
+            f.Closed += (s, args) => this.Close();
+            f.Show();
+        }
+
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f = new frmProducts(idUser);
             f.Closed += (s, args) => this.Close();
             f.Show();
         }

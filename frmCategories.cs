@@ -14,9 +14,16 @@ namespace InventoryManagementSystemJV
 {
     public partial class frmCategories : Form
     {
+        private int idUser;
+
         public frmCategories()
         {
             InitializeComponent();
+        }
+
+        public frmCategories(int user) : this()
+        {
+            idUser = user;
         }
 
         private void frmCategories_Load(object sender, EventArgs e)
@@ -99,6 +106,14 @@ namespace InventoryManagementSystemJV
             dt = dbConnection.CategoryList();
 
             dgvCategories.DataSource = dt;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f = new frmMainMenu(idUser);
+            f.Closed += (s, args) => this.Close();
+            f.Show();
         }
     }
 }
